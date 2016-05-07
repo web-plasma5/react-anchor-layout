@@ -1,14 +1,21 @@
 import { expect } from 'chai';
+import sinon from 'sinon';
+import * as geometry from '../geometry';
 
 describe('calculator', () => {
+  let getValue;
+
+  beforeEach(() => {
+    getValue = sinon.stub(geometry, 'getValue');
+  });
+
+  afterEach(() => {
+    getValue.restore();
+  });
+
   it('compute: should return null if any attrubutes depended on is not ready yet', () => {
-    const geometry = require('../geometry');
-    geometry.addGeometry('calender', {
-      x: 100,
-      y: 200,
-      width: 400,
-      height: 700,
-    });
+    getValue.withArgs('calender', 'y').returns(200);
+    getValue.withArgs('header', 'height').returns(undefined);
 
     const calculator = require('../calculator');
     calculator.addCalculators('content', {
@@ -19,20 +26,8 @@ describe('calculator', () => {
   });
 
   it('compute: should return appropriate attr value', () => {
-    const geometry = require('../geometry');
-    geometry.addGeometry('calender', {
-      x: 100,
-      y: 200,
-      width: 400,
-      height: 700,
-    });
-
-    geometry.addGeometry('header', {
-      x: 50,
-      y: 100,
-      width: 200,
-      height: 300,
-    });
+    getValue.withArgs('calender', 'y').returns(200);
+    getValue.withArgs('header', 'height').returns(300);
 
     const calculator = require('../calculator');
     calculator.addCalculators('content', {
