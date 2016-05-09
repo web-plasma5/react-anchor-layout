@@ -1,21 +1,21 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
-import * as geometry from '../geometry';
+import * as domGeometryStore from '../domGeometryStore';
 
 describe('calculator', () => {
-  let getValue;
+  let getAttr;
 
   beforeEach(() => {
-    getValue = sinon.stub(geometry, 'getValue');
+    getAttr = sinon.stub(domGeometryStore, 'getAttr');
   });
 
   afterEach(() => {
-    getValue.restore();
+    getAttr.restore();
   });
 
   it('compute: should return null if any attrubutes depended on is not ready yet', () => {
-    getValue.withArgs('calender', 'y').returns(200);
-    getValue.withArgs('header', 'height').returns(undefined);
+    getAttr.withArgs('calender', 'y').returns(200);
+    getAttr.withArgs('header', 'height').returns(undefined);
 
     const calculator = require('../calculator');
     calculator.addCalculators('content', {
@@ -26,8 +26,8 @@ describe('calculator', () => {
   });
 
   it('compute: should return appropriate attr value', () => {
-    getValue.withArgs('calender', 'y').returns(200);
-    getValue.withArgs('header', 'height').returns(300);
+    getAttr.withArgs('calender', 'y').returns(200);
+    getAttr.withArgs('header', 'height').returns(300);
 
     const calculator = require('../calculator');
     calculator.addCalculators('content', {
@@ -41,10 +41,15 @@ describe('calculator', () => {
     const calc = require('../calculator').calc;
     const builder = calc('content').height().plus(calc('calender').y()).plus(5);
 
-    expect(builder.build()).to.deep.equal([
-      { identifier: 'content', attr: 'height' },
+    const identifierToRectIdMap = {
+      content: 'uniqueNameForContent',
+      calender: 'uniqueNameForCalender'
+    };
+
+    expect(builder.build(identifierToRectIdMap)).to.deep.equal([
+      { identifier: 'uniqueNameForContent', attr: 'height' },
       '+',
-      { identifier: 'calender', attr: 'y' },
+      { identifier: 'uniqueNameForCalender', attr: 'y' },
       '+',
       5
     ]);

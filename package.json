@@ -4,6 +4,7 @@
   "description": "Layout & Postioning utils for React, borrowed from Qt Quick",
   "scripts": {
     "build:lib": "babel src --out-dir lib",
+    "build:lib:watch": "babel src --out-dir lib --watch",
     "lint": "eslint src",
     "test": "mocha --compilers js:babel-register --recursive 'src/**/__tests__/*' || true",
     "test:cov": "istanbul cover -x 'src/**/__tests__/*' ./node_modules/.bin/_mocha -- --compilers js:babel-register --recursive 'src/**/__tests__/*' || true",
@@ -20,7 +21,8 @@
   "dependencies": {
     "classnames": "^2.2.3",
     "lodash": "^4.11.1",
-    "react": "^15.0.1"
+    "react": "^15.0.1",
+    "shortid": "^2.2.6"
   },
   "devDependencies": {
     "babel-core": "^6.7.2",
