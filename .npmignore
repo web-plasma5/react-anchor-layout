@@ -1,0 +1,11 @@
+examples
+scripts
+docs
+coverage
+.babelrc
+.eslint*
+.idea
+.editorconfig
+.npmignore
+.travis.yml
+webpack.*

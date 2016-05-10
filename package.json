@@ -1,12 +1,14 @@
 {
   "name": "react-anchor-layout",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Layout & Postioning utils for React, borrowed from Qt Quick",
+  "main": "./lib/index.js",
   "scripts": {
     "build:lib": "babel src --out-dir lib",
     "build:lib:watch": "babel src --out-dir lib --watch",
     "clean": "rimraf dist lib",
     "lint": "eslint src",
+    "prepublish": "npm run test && npm run clean && npm run build:lib",
     "test": "mocha --compilers js:babel-register --recursive 'src/**/__tests__/*' || true",
     "test:cov": "istanbul cover -x 'src/**/__tests__/*' ./node_modules/.bin/_mocha -- --compilers js:babel-register --recursive 'src/**/__tests__/*' || true",
     "test:codecov": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
@@ -15,6 +17,7 @@
     "type": "git",
     "url": "https://github.com/crysislinux/react-anchor-layout.git"
   },
+  "author": "Luo Gang <crysis.linux@gmail.com> (https://github.com/crysislinux)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/crysislinux/react-anchor-layout/issues"
@@ -22,8 +25,10 @@
   "dependencies": {
     "classnames": "^2.2.3",
     "lodash": "^4.11.1",
-    "react": "^15.0.1",
     "shortid": "^2.2.6"
+  },
+  "peerDependencies": {
+    "react": "^0.14.0 || ^15.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.7.2",
