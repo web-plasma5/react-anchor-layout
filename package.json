@@ -5,6 +5,7 @@
   "scripts": {
     "build:lib": "babel src --out-dir lib",
     "build:lib:watch": "babel src --out-dir lib --watch",
+    "clean": "rimraf dist lib",
     "lint": "eslint src",
     "test": "mocha --compilers js:babel-register --recursive 'src/**/__tests__/*' || true",
     "test:cov": "istanbul cover -x 'src/**/__tests__/*' ./node_modules/.bin/_mocha -- --compilers js:babel-register --recursive 'src/**/__tests__/*' || true",
@@ -43,6 +44,7 @@
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^15.0.2",
     "react-dom": "^15.0.2",
+    "rimraf": "^2.5.2",
     "sinon": "^1.17.4"
   }
 }
