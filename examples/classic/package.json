@@ -1,0 +1,37 @@
+{
+  "name": "classic",
+  "version": "0.0.1",
+  "description": "Classic layout example for react-anchor-layout",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "babel-polyfill": "^6.7.2",
+    "react": "^15.0.1",
+    "react-anchor-layout": "0.0.2",
+    "react-dom": "^15.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.7.2",
+    "babel-eslint": "^6.0.2",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-class-properties": "^6.6.0",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-2": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "eslint": "~2.7.0",
+    "eslint-config-airbnb": "^7.0.0",
+    "eslint-plugin-jsx-a11y": "^0.6.2",
+    "eslint-plugin-react": "^4.2.1",
+    "express": "^4.13.4",
+    "file-loader": "^0.8.5",
+    "redbox-react": "^1.2.3",
+    "style-loader": "^0.13.0",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.14",
+    "webpack-dev-middleware": "^1.5.1",
+    "webpack-hot-middleware": "^2.10.0"
+  }
+}
