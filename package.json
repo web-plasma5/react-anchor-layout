@@ -1,6 +1,6 @@
 {
   "name": "react-anchor-layout",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Layout & Postioning utils for React, borrowed from Qt Quick",
   "main": "./lib/index.js",
   "scripts": {
